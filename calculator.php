@@ -29,8 +29,7 @@
                 $numberOfOperations++;
             }
         }
-        if ($numberOfOperations > 5)
-        {
+        if ($numberOfOperations > 5) {
             return "Введено больше 5 слогаемых";
         }
         return $summ;
