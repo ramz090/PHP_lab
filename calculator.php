@@ -10,22 +10,22 @@
         $temp = "";
         $numberOfOperations = 0;
 
-        foreach ($terms as $value) {
-            $minusPos = strpos($value, "-");
+        foreach ($terms as $term) {
+            $minusPos = strpos($term, "-");
             if ($minusPos) {
-                $termsMinus = explode("-", $value);
-                foreach ($termsMinus as $keyMinus => $valueMinus) {
+                $termsMinus = explode("-", $term);
+                foreach ($termsMinus as $keyMinus => $termMinus) {
                     if ($keyMinus === 0) {
-                        $temp = $valueMinus;
+                        $temp = $termMinus;
                         $numberOfOperations++;
                     } else {
-                        $temp = $temp - $valueMinus;
+                        $temp = $temp - $termMinus;
                         $numberOfOperations++;
                     }
                 }
                 $summ = $summ + $temp;
             } else {
-                $summ = $summ + $value;
+                $summ = $summ + $term;
                 $numberOfOperations++;
             }
         }
