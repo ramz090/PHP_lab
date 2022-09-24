@@ -1,6 +1,6 @@
-<<?php
+<?php
 
-    function calculator(string $countingString): ?string
+    function calculator(string $countingString): string
     {
         if (!preg_match("/[0-9, \- + ]+$/", $countingString)) {
             return "Вводите только разрешенные символы";
@@ -10,11 +10,11 @@
         $temp = "";
         $numberOfOperations = 0;
 
-        foreach ($terms as $key => &$value) {
+        foreach ($terms as $value) {
             $minusPos = strpos($value, "-");
-            if ($minusPos != false) {
+            if ($minusPos) {
                 $termsMinus = explode("-", $value);
-                foreach ($termsMinus as $keyMinus => &$valueMinus) {
+                foreach ($termsMinus as $keyMinus => $valueMinus) {
                     if ($keyMinus === 0) {
                         $temp = $valueMinus;
                         $numberOfOperations++;
@@ -34,5 +34,4 @@
         }
         return $summ;
     }
-    $enteredString = readline("Введите строку: ");
-    echo calculator($enteredString);
+    echo calculator("123+14-11");
