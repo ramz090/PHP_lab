@@ -1,43 +1,34 @@
 <<?php
 
-
-function calculator(string $CountingString)
-{
-    if(strlen($CountingString) > 9 or strlen($CountingString)< 3) 
+    function calculator(string $countingString): ?string
     {
-        echo "Введены некоректные данные";
-        return;
+        if (!preg_match("/[0-9, \- + ]+$/", $countingString)) {
+            echo "Вводите только разрешенные символы";
+            return null;
+        }
+        $terms = explode("+", $countingString);
+        $summ = 0;
+        $temp = "";
 
-    }   
-    $terms = str_split($CountingString);
-    $summ=$terms[0];
-    for ($i=0; $i< strlen($CountingString);$i++)
-    {
-        if (($i %2) != 0 and ($terms[$i] != '+' and $terms[$i] != '-'))
-        {
-            echo "Введены некоректные данные";
-            return;
+
+        foreach ($terms as $key => &$value) {
+            $minusPos = strpos($value, "-");
+            if ($minusPos != false) {
+                $termsMinus = explode("-", $value);
+                foreach ($termsMinus as $keyMinus => &$valueMinus) {
+                    if ($keyMinus === 0) {
+                        $temp = $valueMinus;
+                    } else {
+                        $temp = $temp - $valueMinus;
+                    }
+                }
+                $summ = $summ + $temp;
+            } else {
+                $summ = $summ + $value;
+            }
         }
 
-            if($terms[$i] == '+')
-            {
-                $summ = $summ + $terms[$i+1];
-            }
-            if($terms[$i] == '-') // ищу символ '-'
-            {
-                $summ = $summ - $terms[$i+1]; //вычитаю из предыдущего элемента элемент через 1
-            }
-        
+        return $summ;
     }
-    return $summ;
-}
-$EnteredString=readline("Введите строку: ");    
-
-
-echo calculator($EnteredString);
-
-
-
-
-
-
+    $enteredString = readline("Введите строку: ");
+    echo calculator($enteredString);
