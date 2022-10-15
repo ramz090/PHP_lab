@@ -12,24 +12,29 @@ class Calculator
     public function sum(float $summand)
     {
         $this->calculatedAmount = $this->calculatedAmount +  $summand;
+        return $this;
     }
 
     public function minus(float $deductible)
     {
         $this->calculatedAmount = $this->calculatedAmount - $deductible;
+        return $this;
     }
 
     public function product(float $multiplier)
     {
         $this->calculatedAmount = $this->calculatedAmount * $multiplier;
+        return $this;
     }
 
     public function division(float $divider)
     {
         if ($divider === 0) {
             $this->calculatedAmountq = 0;
+            return $this;
         } else {
             $this->calculatedAmount = $this->calculatedAmount / $divider;
+            return $this;
         }
     }
 
@@ -41,8 +46,5 @@ class Calculator
 
 $calculator = new Calculator(0);
 
-$calculator->sum(1.4);
-$calculator->sum(2.6);
-$calculator->product(4);
-$calculator->division(3);
-echo $calculator->getResult();
+echo $calculator->sum(1.4)->sum(2.6)->product(4)->getResult();
+
