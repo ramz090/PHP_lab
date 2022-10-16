@@ -4,30 +4,29 @@ class Calculator
 {
     private float $calculatedAmount;
 
-    public function __construct(float $calculatedAmount)
-    {
+    public function __construct(float $calculatedAmount){
         $this->calculatedAmount = $calculatedAmount;
     }
 
-    public function sum(float $summand)
+    public function sum(float $summand): Calculator
     {
         $this->calculatedAmount = $this->calculatedAmount +  $summand;
         return $this;
     }
 
-    public function minus(float $deductible)
+    public function minus(float $deductible): Calculator
     {
         $this->calculatedAmount = $this->calculatedAmount - $deductible;
         return $this;
     }
 
-    public function product(float $multiplier)
+    public function product(float $multiplier): Calculator
     {
         $this->calculatedAmount = $this->calculatedAmount * $multiplier;
         return $this;
     }
 
-    public function division(float $divider)
+    public function division(float $divider): Calculator
     {
         if ($divider === 0) {
             $this->calculatedAmountq = 0;
@@ -38,7 +37,7 @@ class Calculator
         }
     }
 
-    public function getResult()
+    public function getResult(): float
     {
         return $this->calculatedAmount;
     }
