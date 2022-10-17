@@ -30,7 +30,7 @@ class Calculator
     public function division(float $divider): self
     {
         if ($divider === 0) {
-            $this->calculatedAmountq = 0;
+            $this->calculatedAmount = 0;
             return $this;
         } else {
             $this->calculatedAmount = $this->calculatedAmount / $divider;
