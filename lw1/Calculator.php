@@ -9,25 +9,25 @@ class Calculator
         $this->calculatedAmount = $calculatedAmount;
     }
 
-    public function sum(float $summand): Self
+    public function sum(float $summand): self
     {
         $this->calculatedAmount = $this->calculatedAmount +  $summand;
         return $this;
     }
 
-    public function minus(float $deductible): Self
+    public function minus(float $deductible): self
     {
         $this->calculatedAmount = $this->calculatedAmount - $deductible;
         return $this;
     }
 
-    public function product(float $multiplier): Self
+    public function product(float $multiplier): self
     {
         $this->calculatedAmount = $this->calculatedAmount * $multiplier;
         return $this;
     }
 
-    public function division(float $divider): Self
+    public function division(float $divider): self
     {
         if ($divider === 0) {
             $this->calculatedAmountq = 0;
