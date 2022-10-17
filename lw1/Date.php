@@ -24,42 +24,42 @@ class Date
             $this->month = $arrDate[1];
         }
 
-        if ($arrDate[2] % 4 === 0 && $arrDate[1] == 2) {
+        if ($arrDate[2] % 4 === 0 && (int)$arrDate[1] === 2) {
             if ($arrDate[0] > 29 || $arrDate[0] < 1) {
                 echo ("Ошибка при вводе дня\n");
                 $goodDay = false;
             }
         }
 
-        if ($arrDate[2] % 4 !== 0 && $arrDate[1] == 2) {
+        if ($arrDate[2] % 4 !== 0 && (int)$arrDate[1] === 2) {
             if ($arrDate[0] > 28 || $arrDate[0] < 1) {
                 echo ("Ошибка при вводе дня\n");
                 $goodDay = false;
             }
         }
-        if ($arrDate[1] == 1 or  $arrDate[1] == 3 or $arrDate[1] == 5 or $arrDate[1] == 7 or $arrDate[1] == 8 or $arrDate[1] == 10 or $arrDate[1] == 12) {
+        if ((int)$arrDate[1] === 1 or  (int)$arrDate[1] === 3 or (int)$arrDate[1] === 5 or (int)$arrDate[1] === 7 or (int)$arrDate[1] === 8 or (int)$arrDate[1] === 10 or (int)$arrDate[1] === 12) {
             if ($arrDate[0] < 1 or $arrDate[0] > 31) {
                 echo ("Ошибка при вводе дня\n");
                 $goodDay = false;
             }
         }
-        if ($arrDate[1] == 4 or  $arrDate[1] == 6 or $arrDate[1] == 9 or $arrDate[1] == 11) {
+        if ((int)$arrDate[1] === 4 or  (int)$arrDate[1] === 6 or (int)$arrDate[1] === 9 or (int)$arrDate[1] === 11) {
             if ($arrDate[0] < 1 or $arrDate[0] > 30) {
                 echo ("Ошибка при вводе дня\n");
                 $goodDay = false;
             }
         }
-        if ($goodDay === true) {
+        if ($goodDay) {
             $this->day = $arrDate[0];
         }
     }
 
 
-    public function diffDay(Date $firstDate, Date $secondDate): void
+    public function diffDay(Date $firstDate, Date $secondDate): int
     {
         $tempNumberOfDay = 0;
-        for ($I = 1; $I <= $firstDate->year; $I++) {
-            if ($I == $firstDate->year) {
+        for ($i = 1; $i <= $firstDate->year; $i++) {
+            if ($i == $firstDate->year) {
                 for ($j = 1; $j < $firstDate->month; $j++) {
                     if ($j === 1 || $j === 3 || $j === 5 || $j === 7 || $j === 8 || $j === 10 || $j === 12) {
                         $tempNumberOfDay = $tempNumberOfDay + 31;
@@ -78,17 +78,17 @@ class Date
             }
 
 
-            if ($I % 4 == 0 && $I != $firstDate->year) {
+            if ($i % 4 === 0 && $i !== $firstDate->year) {
                 $tempNumberOfDay = $tempNumberOfDay + 366;
             }
-            if ($I % 4 != 0 && $I != $firstDate->year) {
+            if ($i % 4 !== 0 && $i !== $firstDate->year) {
                 $tempNumberOfDay = $tempNumberOfDay + 365;
             }
         }
         $firstDate->numberOfDay = $tempNumberOfDay;
         $secondNumberOfDay = 0;
-        for ($I = 1; $I <= $secondDate->year; $I++) {
-            if ($I == $secondDate->year) {
+        for ($i = 1; $i <= $secondDate->year; $i++) {
+            if ($i === $secondDate->year) {
                 for ($j = 1; $j < $secondDate->month; $j++) {
                     if ($j === 1 || $j === 3 || $j === 5 || $j === 7 || $j === 8 || $j === 10 || $j === 12) {
                         $secondNumberOfDay = $secondNumberOfDay + 31;
@@ -107,10 +107,10 @@ class Date
             }
 
 
-            if ($I % 4 == 0 && $I != $secondDate->year) {
+            if ($i % 4 === 0 && $i !== $secondDate->year) {
                 $secondNumberOfDay = $secondNumberOfDay + 366;
             }
-            if ($I % 4 != 0 && $I != $secondDate->year) {
+            if ($i % 4 !== 0 && $i !== $secondDate->year) {
                 $secondNumberOfDay = $secondNumberOfDay + 365;
             }
         }
@@ -121,7 +121,7 @@ class Date
             $tempNumberOfDay = $temp;
         }
         $diffDay = $tempNumberOfDay - $secondNumberOfDay;
-        echo ("$diffDay \n");
+        return $diffDay;
     }
 
     public function minusDay(int $day): void
@@ -170,48 +170,48 @@ class Date
         echo ("$thisDay,$thisMonth,$thisYear\n");
     }
 
-    public function format(string $choise): void
+    public function format(string $choise): string
     {
         if ($choise === "ru") {
-            echo ("$this->day.$this->month.$this->year\n");
+            return "$this->day.$this->month.$this->year\n";
         }
         if ($choise === "en") {
-            echo ("$this->year-$this->month-$this->day\n");
+            return "$this->year-$this->month-$this->day\n";
         }
     }
-    public function getDateOfWeek(): void
+    public function getDateOfWeek(): string
     {
         $dateTime = ("$this->year-$this->month-$this->day");
         $time = new DateTime($dateTime);
         $date = $time->format('w');
-        if ($date == 1) {
-            echo ("Пн\n");
+        if ((int)$date === 1) {
+            return "Пн\n";
         }
-        if ($date == 2) {
-            echo ("Вт\n");
+        if ((int)$date === 2) {
+            return "Вт\n";
         }
-        if ($date == 3) {
-            echo ("Ср\n");
+        if ((int)$date === 3) {
+            return "Ср\n";
         }
-        if ($date == 4) {
-            echo ("Чт\n");
+        if ((int)$date === 4) {
+            return "Чт\n";
         }
-        if ($date == 5) {
-            echo ("Пт\n");
+        if ((int)$date === 5) {
+            return "Пт\n";
         }
-        if ($date == 6) {
-            echo ("Сб\n");
+        if ((int)$date === 6) {
+            return "Сб\n";
         }
-        if ($date == 7) {
-            echo ("Вс\n");
+        if ((int)$date === 7) {
+            return "Вс\n";
         }
     }
 }
 
 $date = new Date('30,4,4');
 $date2 = new Date('28,2,3');
-$date->diffDay($date, $date2);
-$date->minusDay(3);
-$date->format("ru");
-$date->format("en");
-$date->getDateOfWeek();
+echo ("{$date->diffDay($date,$date2)}\n");
+echo ("{$date->minusDay(3)}");
+echo ("{$date->format("ru")}");
+echo ("{$date->format("en")}");
+echo ("{$date->getDateOfWeek()}");
