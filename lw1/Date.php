@@ -9,7 +9,7 @@ class Date
     public function __construct(string $calculatingDate)
     {
         $goodDay = true;
-        if (!preg_match("/^[0-9,]+$/", $calculatingDate) or strlen($calculatingDate) < 5) {
+        if (!preg_match("/^[0-9,]+$/", $calculatingDate) || strlen($calculatingDate) < 5) {
             echo ("Вводите только разрешенные символы\n");
         }
         $arrDate = explode(",", $calculatingDate);
@@ -37,14 +37,14 @@ class Date
                 $goodDay = false;
             }
         }
-        if ((int)$arrDate[1] === 1 or  (int)$arrDate[1] === 3 or (int)$arrDate[1] === 5 or (int)$arrDate[1] === 7 or (int)$arrDate[1] === 8 or (int)$arrDate[1] === 10 or (int)$arrDate[1] === 12) {
-            if ($arrDate[0] < 1 or $arrDate[0] > 31) {
+        if ((int)$arrDate[1] === 1 ||  (int)$arrDate[1] === 3 || (int)$arrDate[1] === 5 || (int)$arrDate[1] === 7 || (int)$arrDate[1] === 8 || (int)$arrDate[1] === 10 || (int)$arrDate[1] === 12) {
+            if ($arrDate[0] < 1 || $arrDate[0] > 31) {
                 echo ("Ошибка при вводе дня\n");
                 $goodDay = false;
             }
         }
-        if ((int)$arrDate[1] === 4 or  (int)$arrDate[1] === 6 or (int)$arrDate[1] === 9 or (int)$arrDate[1] === 11) {
-            if ($arrDate[0] < 1 or $arrDate[0] > 30) {
+        if ((int)$arrDate[1] === 4 ||  (int)$arrDate[1] === 6 || (int)$arrDate[1] === 9 || (int)$arrDate[1] === 11) {
+            if ($arrDate[0] < 1 || $arrDate[0] > 30) {
                 echo ("Ошибка при вводе дня\n");
                 $goodDay = false;
             }
@@ -134,22 +134,22 @@ class Date
         } else {
             while ($thisDay - $day <= 0) {
                 if ($thisMonth - 1 > 1) {
-                    if ($thisMonth === 1 or  $thisMonth === 3 or $thisMonth === 5 or $thisMonth === 7 or $thisMonth === 8 or $thisMonth === 10 or $thisMonth === 12) {
+                    if ($thisMonth === 1 ||  $thisMonth === 3 || $thisMonth === 5 || $thisMonth === 7 || $thisMonth === 8 || $thisMonth === 10 || $thisMonth === 12) {
                         $thisDay = $thisDay + 31;
                         $thisMonth = $thisMonth - 1;
                         continue;
                     }
-                    if ($thisMonth === 4 or $thisMonth === 6 or $thisMonth === 9 or $thisMonth === 11) {
+                    if ($thisMonth === 4 || $thisMonth === 6 || $thisMonth === 9 || $thisMonth === 11) {
                         $thisDay = $thisDay + 30;
                         $thisMonth = $thisMonth - 1;
                         continue;
                     }
-                    if ($thisMonth === 2 and $thisYear % 4 === 0) {
+                    if ($thisMonth === 2 && $thisYear % 4 === 0) {
                         $thisDay = $thisDay + 29;
                         $thisMonth = $thisMonth - 1;
                         continue;
                     }
-                    if ($thisMonth === 2 and $thisYear % 4 !== 0) {
+                    if ($thisMonth === 2 && $thisYear % 4 !== 0) {
                         $thisDay = $thisDay + 28;
                         $thisMonth = $thisMonth - 1;
                         continue;
@@ -183,26 +183,26 @@ class Date
     {
         $dateTime = ("$this->year-$this->month-$this->day");
         $time = new DateTime($dateTime);
-        $date = $time->format('w');
-        if ((int)$date === 1) {
+        $date = (int)$time->format('w');
+        if ($date === 1) {
             return "Пн\n";
         }
-        if ((int)$date === 2) {
+        if ($date === 2) {
             return "Вт\n";
         }
-        if ((int)$date === 3) {
+        if ($date === 3) {
             return "Ср\n";
         }
-        if ((int)$date === 4) {
+        if ($date === 4) {
             return "Чт\n";
         }
-        if ((int)$date === 5) {
+        if ($date === 5) {
             return "Пт\n";
         }
-        if ((int)$date === 6) {
+        if ($date === 6) {
             return "Сб\n";
         }
-        if ((int)$date === 7) {
+        if ($date === 7) {
             return "Вс\n";
         }
     }
