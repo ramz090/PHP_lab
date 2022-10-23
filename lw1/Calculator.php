@@ -29,7 +29,7 @@ class Calculator
 
     public function division(float $divider): self
     {
-        $this->calculatedAmount = ($divider !== 0) ? $divider / $this->calculatedAmount  : 0;
+        $this->calculatedAmount = ($divider !== 0) ?  $this->calculatedAmount / $divider : 0;
         return $this;
     }
 
@@ -41,4 +41,4 @@ class Calculator
 
 $calculator = new Calculator(0);
 
-echo $calculator->sum(1.4)->sum(2.6)->product(4)->division(0)->getResult();
+echo $calculator->sum(1.4)->sum(2.6)->product(4)->division(2)->getResult();
