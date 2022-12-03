@@ -1,6 +1,6 @@
 {
     "name": "user/lw2",
-    "type": "library",
+    "type": "project",
     "autoload": {
         "psr-4": {
             "User\\Lw2\\": "src/"
