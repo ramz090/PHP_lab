@@ -124,7 +124,7 @@ class Date
         return $diffDay;
     }
 
-    public function minusDay(int $day): void
+    public function minusDay(int $day): string
     {
         $thisDay = $this->day;
         $thisMonth = $this->month;
@@ -161,22 +161,22 @@ class Date
                         $thisYear = $thisYear - 1;
                         continue;
                     } else {
-                        echo ('Ошибка');
+                        return ('Ошибка');
                     }
                 }
             }
             $thisDay = $thisDay - $day;
         }
-        echo ("$thisDay,$thisMonth,$thisYear\n");
+        return $thisDay . "," . $thisMonth . "," . $thisYear;
     }
 
     public function format(string $choise): string
     {
         if ($choise === "ru") {
-            return "$this->day.$this->month.$this->year\n";
+            return "$this->day.$this->month.$this->year";
         }
         if ($choise === "en") {
-            return "$this->year-$this->month-$this->day\n";
+            return "$this->year-$this->month-$this->day";
         }
     }
     public function getDateOfWeek(): string
@@ -184,34 +184,35 @@ class Date
         $dateTime = ("$this->year-$this->month-$this->day");
         $time = new DateTime($dateTime);
         $date = (int)$time->format('w');
+        if ($date === 0) {
+            return "Пн";
+        }
         if ($date === 1) {
-            return "Пн\n";
+            return "Вт";
         }
         if ($date === 2) {
-            return "Вт\n";
+            return "Ср";
         }
         if ($date === 3) {
-            return "Ср\n";
+            return "Чт";
         }
         if ($date === 4) {
-            return "Чт\n";
+            return "Пт";
         }
         if ($date === 5) {
-            return "Пт\n";
+            return "Сб";
         }
         if ($date === 6) {
-            return "Сб\n";
+            return "Вс";
         }
-        if ($date === 7) {
-            return "Вс\n";
-        }
+        return "";
     }
 }
 
 $date = new Date('30,4,4');
-$date2 = new Date('28,2,3');
+$date2 = new Date('2,3,3');
 echo ("{$date->diffDay($date,$date2)}\n");
-echo ("{$date->minusDay(3)}");
-echo ("{$date->format("ru")}");
-echo ("{$date->format("en")}");
-echo ("{$date->getDateOfWeek()}");
+echo ("{$date->minusDay(45)}") . PHP_EOL;
+echo ("{$date->format("ru")}") . PHP_EOL;
+echo ("{$date->format("en")}") . PHP_EOL;
+echo ("{$date2->getDateOfWeek()}").PHP_EOL;

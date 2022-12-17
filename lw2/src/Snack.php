@@ -16,7 +16,7 @@ abstract class Snack
         echo ($this->chocolate) . PHP_EOL;
         echo ("Добавлены начинок: ");
         foreach ($this->toppings as $value) {
-            echo $value . '';
+            echo $value . ', ';
         }
         echo (".") . PHP_EOL;
     }
