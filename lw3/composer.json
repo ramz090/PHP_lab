@@ -1,0 +1,27 @@
+{
+    "name": "user/lw3",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "User\\Lw3\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Roma",
+            "email": "Jambulil@mail.ru"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Regallas/True_library"
+        }
+    ],
+    "require": {
+        "1/lw2": "dev-main"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.9"
+    }
+}
