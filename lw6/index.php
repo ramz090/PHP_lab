@@ -1,6 +1,8 @@
 <?php
-require_once "User.php";
-require_once "UserService.php";
+require_once "vendor/autoload.php";
+use Roma\Lw6\User;
+use Roma\Lw6\UserService;
+
 $firstUser  = new User("First", "123", new DateTime("2020-12-2"));
 $secondUser  = new User("second", "123", new DateTime("2019-12-2"));
 $thridUser  = new User("thrid", "123", new DateTime("2018-12-2"));

@@ -1,12 +1,16 @@
-<?php 
-class User{
+<?php
+
+namespace Roma\Lw6;
+
+class User
+{
     public string $username;
-    public string $password; 
-    public DateTime $birthday;
-    public function __construct(string $enteredUsername,string $enteredPassword, DateTime $enteredBirthday)
+    public string $password;
+    public \DateTime $birthday;
+    public function __construct(string $username, string $password, \DateTime $birthday)
     {
-        $this->username = $enteredUsername;
-        $this->password = $enteredPassword; 
-        $this->birthday = $enteredBirthday;
+        $this->username = $username;
+        $this->password = $password;
+        $this->birthday = $birthday;
     }
 }

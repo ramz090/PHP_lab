@@ -3,7 +3,7 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "User\\Lw6\\": "src/"
+            "Roma\\Lw6\\": "src/"
         }
     },
     "authors": [
